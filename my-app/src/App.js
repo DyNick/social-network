@@ -12,20 +12,28 @@ import Dialog from './components/dialog/Dialog';
 import News from './components/news/News';
 import Music from './components/music/Music';
 import Settings from './components/settings/Settings';
-function App() {
+function App(props) {
+  
   return (
     <BrowserRouter>
+   
     <div className="App">
         <div className='container grid'>
           <Header/>
           <Nav/>
-        
           <div className='App-wrapper-content'>
-            <Route path = '/dialog' component={Dialog}/>
-            <Route path = '/profile' component={Content}/>
+            <Route path = '/dialogs' render ={ ()=><Dialog users={props.appState.users} 
+                                                            massege={props.appState.massege}
+                                                            dispatch = {props.dispatch}
+                                                            newMassegeText={props.appState.newMassegeText}
+            />}/>
+            <Route path = '/profile' render ={ ()=><Content posts={props.appState.posts} 
+                                                dispatch = {props.dispatch}
+                                                 newPostText={props.appState.newPostText}
+            />}/>
             <Route path = '/news' component={News}/>
             <Route path = '/music' component ={Music}/>
-            <Route path = '/settings' component ={Settings}/>
+            <Route path = '/settings' render ={ ()=><Settings/> }/>
           </div>
 
           <Footer/>

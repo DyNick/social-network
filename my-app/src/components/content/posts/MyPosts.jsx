@@ -1,13 +1,24 @@
 import React from 'react';
 import MyPostClasses from'./MyPosts.module.css';
+import {addPostValue,updateTextValue} from '../../../redux/state'
 
-function MyPosts(){
+
+function MyPosts(props){
+    let newPostElement = React.createRef()
+    let addPost = ()=>{
+        props.dispatch(addPostValue());
+    };
+    let onPostChange = ()=>{
+        let text = newPostElement.current.value;    
+        
+        props.dispatch(updateTextValue(text))
+    }
     return (
-        <div className={`${MyPostClasses.myPostBox} input-group mb-3`}>
+        <div className={`${MyPostClasses.myPostBox}  mb-3`}>
             <p  className='my-post__header'></p>
-            <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2" />
-            <div class="input-group-append">
-                <button class="btn btn-outline-secondary" type="button">Button</button>
+            <textarea className="form-control" placeholder="Recipient's username" ref={newPostElement} onChange={onPostChange} value={props.newPostText}></textarea>
+            <div className="">
+                <button className="btn btn-outline-secondary" type="button" onClick={addPost}>Button</button>
             </div>
         </div>
     )

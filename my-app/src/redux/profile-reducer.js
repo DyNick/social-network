@@ -1,25 +1,26 @@
 const UPDATE_TEXT ='UPDATE-TEXT';
 const ADD_POST = 'ADD-POST';
- const profileReducer = (state, action) =>{
-//debugger;
+const profileReducer = (state, action) =>{
+  //  console.log(state);
     if(action.type === ADD_POST){
         let newPost = {
-            text: state.newPostText,
+            text:state.newPostText,
             id: 5,
             likesCount: 0
         }
-        console.log(state.newPostText)
         state.posts.push(newPost);
         state.newPostText = '';
-       // state._rerenderEntireTree(state);
+        console.log(state.newPostText)
     }
     
     else if(action.type === UPDATE_TEXT){
+        console.log(action);
         state.newPostText = action.newText;
-        return state;
-        //state._rerenderEntireTree(state);
     }
+    //console.log(state)
+    
     return state
+    
 }
 
 export default profileReducer

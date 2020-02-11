@@ -13,7 +13,7 @@ import News from './components/news/News';
 import Music from './components/music/Music';
 import Settings from './components/settings/Settings';
 function App(props) {
-  
+  //debugger;
   return (
     <BrowserRouter>
    
@@ -22,15 +22,18 @@ function App(props) {
           <Header/>
           <Nav/>
           <div className='App-wrapper-content'>
-            <Route path = '/dialogs' render ={ ()=><Dialog users={props.appState.users} 
-                                                            massege={props.appState.massege}
+            <Route path = '/dialogs' render ={ ()=><Dialog users={props.appState.dialogsPage.users} 
+                                                            massege={props.appState.dialogsPage.massege}
                                                             dispatch = {props.dispatch}
-                                                            newMassegeText={props.appState.newMassegeText}
+                                                            newMassegeText={props.appState.dialogsPage.newMassegeText}
             />}/>
-            <Route path = '/profile' render ={ ()=><Content posts={props.appState.posts} 
-                                                dispatch = {props.dispatch}
-                                                 newPostText={props.appState.newPostText}
+            <Route path = '/profile' render ={ ()=><Content posts={props.appState.profilePage.posts} 
+                                                            dispatch = {props.dispatch}
+                                                            newPostText={props.appState.profilePage.newPostText}
+                                                            state = {props.appState}
+                                                            store = {props.store}
             />}/>
+
             <Route path = '/news' component={News}/>
             <Route path = '/music' component ={Music}/>
             <Route path = '/settings' render ={ ()=><Settings/> }/>

@@ -1,6 +1,6 @@
 import React from 'react';
 import MassegeClasses from './Massege.module.css';
-import {addMassegeValue,updateMassegeValue} from '../../../redux/state'
+//import {addMassegeValue,updateMassegeValue} from '../../../redux/dialog-reducer'
 
 const MassegeItem = (props)=>{
     return(
@@ -14,11 +14,13 @@ const MassegeItem = (props)=>{
 function Massege(props) {
     let newMassegeElement = React.createRef()
     let addMassege = ()=>{
-        props.dispatch(addMassegeValue());
+        // props.dispatch(addMassegeValue());
+        props.addMassege()
     };
     let onMassegeChange = ()=>{
-        let text = newMassegeElement.current.value;    
-        props.dispatch(updateMassegeValue(text))
+         let text = newMassegeElement.current.value;    
+        // props.dispatch(updateMassegeValue(text))
+        props.onMassegeChange(text)
     }
     return (
         <div className={MassegeClasses.wrapper}>

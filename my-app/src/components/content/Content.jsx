@@ -1,10 +1,11 @@
 import React from 'react';
 import './../../App.css';
 import classes from './Content.module.css';
-import MyPosts from './posts/MyPosts'
+//import MyPosts from './posts/MyPosts';
+import MyPostsContainer from './posts/MyPostContainer'
 import PostItem from './posts/post/Post'
 function Content(props){
-    
+    //debugger;
     return (
         <div className="App-content">
             <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsam744YmpYIA5XM28ePYOOpR4tFlMZRdWpqLG6NGgZXFU9vRh&s' className={classes.backgroundImage}/>
@@ -17,7 +18,10 @@ function Content(props){
                     <p className ='education'><span>Education</span> SOME education</p>
                 </div>
             </div>
-            <MyPosts posts={props.posts}  dispatch = {props.dispatch} newPostText={props.newPostText} />
+        
+            {/* <MyPosts posts={props.posts}  dispatch = {props.dispatch} newPostText={props.newPostText} /> */}
+            <MyPostsContainer dispatch = {props.dispatch} posts={props.posts}  newPostText={props.newPostText} state = {props.state}/>
+            {/* <MyPostsContainer dispatch = {props.dispatch} state = {props.state}/> */}
             {props.posts.map((item,index)=>{
                 return(
                     <PostItem key={index} posts={item.text} />

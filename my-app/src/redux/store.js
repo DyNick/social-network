@@ -1,10 +1,10 @@
 import profileReducer from './profile-reducer';
 import  dialogReducer from './dialog-reducer'
-const UPDATE_TEXT ='UPDATE-TEXT';
-const ADD_POST = 'ADD-POST';
+// const UPDATE_TEXT ='UPDATE-TEXT';
+// const ADD_POST = 'ADD-POST';
 
-const ADD_MASSAGE = 'ADD-MASSEGE';
-const UPDATE_MASSEGE = 'UPDATE-MASSEGE';
+// const ADD_MASSAGE = 'ADD-MASSEGE';
+// const UPDATE_MASSEGE = 'UPDATE-MASSEGE';
 
 let store = {
     _state: {
@@ -64,37 +64,6 @@ let store = {
         this._state = profileReducer(this._state, action);
         this._state = dialogReducer(this._state, action);
         this._rerenderEntireTree(this._state);
-        // if(action.type === ADD_POST){
-        //     let newPost = {
-        //         text: this._state.newPostText,
-        //         id: 5,
-        //         likesCount: 0
-        //     }
-        //     this._state.posts.push(newPost);
-        //     this._rerenderEntireTree(this._state);
-        //     this._state.newPostText = '';
-        // }
-        
-        // else if(action.type === UPDATE_TEXT){
-        //     this._state.newPostText = action.newText;
-        //     this._rerenderEntireTree(this._state);
-        // }
-        
-        //  if(action.type === ADD_MASSAGE){
-            
-        //     let newMassege = {
-        //         text: this._state.newMassegeText,
-        //     }
-        //     this._state.massege.push(newMassege);
-        //     this._rerenderEntireTree(this._state);
-        //     this._state.newMassegeText = ' ';
-        // }
-        
-        // else if(action.type === UPDATE_MASSEGE){
-
-        //     this._state.newMassegeText = action.newMassege;
-        //     this._rerenderEntireTree(this._state);
-        // }
     },
     subscribe(observer){
         this._rerenderEntireTree = observer;
@@ -102,20 +71,20 @@ let store = {
    
 }
 
-export const addPostValue = ()=>{
-    return {type: ADD_POST }
-}
+// export const addPostValue = ()=>{
+//     return {type: ADD_POST }
+// }
 
-export const updateTextValue = (text)=>{
-    return {type: UPDATE_TEXT, newText: text}
-}
+// export const updateTextValue = (text)=>{
+//     return {type: UPDATE_TEXT, newText: text}
+// }
 
-export const addMassegeValue = ()=>{
-    return {type: ADD_MASSAGE}
-}
+// export const addMassegeValue = ()=>{
+//     return {type: ADD_MASSAGE}
+// }
 
-export const updateMassegeValue = (text)=>{
-    return {type: UPDATE_MASSEGE, newMassege: text}
-}
+// export const updateMassegeValue = (text)=>{
+//     return {type: UPDATE_MASSEGE, newMassege: text}
+// }
 
 export default store

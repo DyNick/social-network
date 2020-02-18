@@ -22,7 +22,12 @@ const linkParams = [
     {
         link: '/settings',
         name: 'Settings'
+    },
+    {
+        link: '/users',
+        name: 'Users'
     }
+
 ];
 function Nav(){
 

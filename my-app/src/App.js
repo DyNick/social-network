@@ -12,28 +12,22 @@ import Dialog from './components/dialog/Dialog';
 import News from './components/news/News';
 import Music from './components/music/Music';
 import Settings from './components/settings/Settings';
+//import Users from './components/users/Users'
+import UsersContainer from './components/users/UsersContainer';
 function App(props) {
   //debugger;
   return (
-    <BrowserRouter>
+    // <BrowserRouter>
    
     <div className="App">
         <div className='container grid'>
           <Header/>
           <Nav/>
           <div className='App-wrapper-content'>
-            <Route path = '/dialogs' render ={ ()=><Dialog users={props.appState.dialogsPage.users} 
-                                                            massege={props.appState.dialogsPage.massege}
-                                                            dispatch = {props.dispatch}
-                                                            newMassegeText={props.appState.dialogsPage.newMassegeText}
-            />}/>
-            <Route path = '/profile' render ={ ()=><Content posts={props.appState.profilePage.posts} 
-                                                            dispatch = {props.dispatch}
-                                                            newPostText={props.appState.profilePage.newPostText}
-                                                            state = {props.appState}
-                                                            store = {props.store}
-            />}/>
 
+            <Route path = '/dialogs' render ={ ()=><Dialog  />}/>
+            <Route path = '/profile' render ={ ()=><Content  />}/>
+            <Route path = '/users' render ={ ()=><UsersContainer/> }/>
             <Route path = '/news' component={News}/>
             <Route path = '/music' component ={Music}/>
             <Route path = '/settings' render ={ ()=><Settings/> }/>
@@ -42,7 +36,7 @@ function App(props) {
           <Footer/>
       </div>
     </div>
-    </BrowserRouter>
+    // {/* </BrowserRouter> */}
   );
 }
 

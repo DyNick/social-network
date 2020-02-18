@@ -3,7 +3,7 @@ import './../../App.css';
 import classes from './Content.module.css';
 //import MyPosts from './posts/MyPosts';
 import MyPostsContainer from './posts/MyPostContainer'
-import PostItem from './posts/post/Post'
+import Post from './posts/post/Post'
 function Content(props){
     //debugger;
     return (
@@ -18,15 +18,15 @@ function Content(props){
                     <p className ='education'><span>Education</span> SOME education</p>
                 </div>
             </div>
-        
+            <MyPostsContainer />
             {/* <MyPosts posts={props.posts}  dispatch = {props.dispatch} newPostText={props.newPostText} /> */}
-            <MyPostsContainer dispatch = {props.dispatch} posts={props.posts}  newPostText={props.newPostText} state = {props.state}/>
+            {/* <MyPostsContainer dispatch = {props.dispatch} posts={props.posts}  newPostText={props.newPostText} state = {props.state}/> */}
             {/* <MyPostsContainer dispatch = {props.dispatch} state = {props.state}/> */}
-            {props.posts.map((item,index)=>{
+            {/* {props.posts.map((item,index)=>{
                 return(
-                    <PostItem key={index} posts={item.text} />
+                    <Post key={index} posts={item.text} />
                 )
-            })}
+            })} */}
         
        
       </div>

@@ -29,20 +29,35 @@ let intialState = {
     newMassegeText : 'Some new  massege'
 }
 const dialogReducer = (state = intialState, action) =>{
-    if(action.type === ADD_MASSAGE){
+    //let stateCopy;
+    switch(action.type){
+        case ADD_MASSAGE: {
+            // let newMassege = {
+            //     text: state.newMassegeText,
+            // }
+            let body =  state.newMassegeText
+            return {
+                ...state,
+                newMassegeText:'',
+                massege : [...state.massege,{text: body}]
+            };
             
-            let newMassege = {
-                text: state.newMassegeText,
-            }
-            state.massege.push(newMassege);
-            state.newMassegeText = ' ';
+            // stateCopy.massege = [...state.massege]
+            // stateCopy.massege.push(newMassege);
+            // stateCopy.newMassegeText = ' ';
+            //return stateCopy;
         }
-        
-        else if(action.type === UPDATE_MASSEGE){
-            state.newMassegeText = action.newMassege;
+        case UPDATE_MASSEGE:{
+           return {
+                ...state,
+                newMassegeText: action.newMassege
+            };
+            //stateCopy.newMassegeText = action.newMassege;
+            //return stateCopy;
         }
-
-    return state
+       
+    }
+    return state;
 }
 export const addMassegeValue = ()=>{
     return {type: ADD_MASSAGE}

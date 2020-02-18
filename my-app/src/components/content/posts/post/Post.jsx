@@ -1,6 +1,6 @@
 import React from 'react';
 import PostClasses from'./Post.module.css';
-function MyPost(props){
+function Post(props){
 
     return (
 
@@ -8,4 +8,4 @@ function MyPost(props){
     )
 }
 
-export default MyPost
+export default Post

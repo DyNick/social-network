@@ -1,9 +1,13 @@
 const UN_FOLLOW = 'UN-FOLLOW';
 const FOLLOW = 'FOLLOW';
 const SET_USERS = 'SET-USERS';
+const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE'
 
 let initialState = {
-    users: []
+    users: [],
+    pageSize: 5,
+    totalUsersCount: 50,
+    currentPage: 1
 
 }
 const userReducer = (state = initialState, action) => {
@@ -31,7 +35,6 @@ const userReducer = (state = initialState, action) => {
                 ...state,
                 users: state.users.map(u => {
                     if (u.id === action.userId) {
-                        console.log(action.userId)
                         return {
                             ...u, follow: true
                         }
@@ -45,11 +48,19 @@ const userReducer = (state = initialState, action) => {
         }
 
         case SET_USERS: {
-            console.log(action.users);
-            console.log(state)
+
             return {
                 ...state,
-                users: [...state.users,...action.users]
+                //users: [...state.users,...action.users]
+                users: [...action.users]
+            };
+
+        }
+        case SET_CURRENT_PAGE: {
+
+            return {
+                ...state,
+                currentPage: action.currentPage
             };
 
         }
@@ -68,8 +79,9 @@ export const unFollowActionCreator = (userId) => {
     return { type: UN_FOLLOW, userId }
 }
 export const setUsersActionCreator = (users) => {
-    console.log(users)
     return { type: SET_USERS, users }
 }
-
+export const setCurrentPageActionCreator = ( currentPage) => {
+    return { type: SET_CURRENT_PAGE,  currentPage: currentPage}
+}
 export default userReducer

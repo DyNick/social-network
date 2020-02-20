@@ -25,7 +25,7 @@ const Users = (props) => {
             {props.users.map((item, index) => {
                 return (
                     <div key={index}>
-                        <img src={item.avatar_url} alt="" />
+                        <img src={item.avatar_url} alt="" className= {UsersClasses.avatar}/>
                         <p>{item.login}</p>
                         <div>
                             {

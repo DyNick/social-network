@@ -11,3 +11,8 @@ img{
     border: 1px solid #000;
     font-weight: bold;
 }
+
+.preloader{
+    position: relative;
+    z-index:1;
+}

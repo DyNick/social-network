@@ -1,8 +1,10 @@
 import React from 'react';
 import Users from './Users'
-import {followActionCreator,unFollowActionCreator,setUsersActionCreator,setCurrentPageActionCreator} from '../../redux/users-reducer';
+import {followActionCreator,unFollowActionCreator,setUsersActionCreator,setCurrentPageActionCreator,isFetchingActionCreator} from '../../redux/users-reducer';
 import * as axios from 'axios'
 import { connect } from 'react-redux';
+import PreloaderImg from '../../assets/image/preloader.gif';
+import Preloader from '../preloader/Preloader'
 
 
 class UsersContent extends React.Component {
@@ -12,20 +14,27 @@ class UsersContent extends React.Component {
     }
     
     componentDidMount(){
+        this.props.toggleFetching(true);
         axios.get(`https://api.github.com/users?since=${this.props.currentPage}&per_page=${this.props.pageSize}`)
         .then(response=>{
+            this.props.toggleFetching(false);
             this.props.setUsers(response.data)
         });
     }
     onPageChanged = (pageNumber)=>{
+        this.props.toggleFetching(true);
         this.props.setCurrentPage(pageNumber);
         axios.get(`https://api.github.com/users?since=${pageNumber}&per_page=${this.props.pageSize}`)
         .then(response=>{
-            this.props.setUsers(response.data)
+            this.props.toggleFetching(false);
+            this.props.setUsers(response.data);
         });
     }
     render (){
-        return <Users 
+        return <>
+                {/* {this.props.isFetching ? <Preloader/> : null} */}
+                {this.props.isFetching ? <Preloader/> : 
+                <Users 
                     users = { this.props.users}
                     pageSize = { this.props.pageSize}
                     totalUsersCount= { this.props.totalUsersCount}
@@ -34,6 +43,8 @@ class UsersContent extends React.Component {
                     following = {this.props.following}
                     unFollowing = {this.props.unFollowing}
                 />
+                }
+            </>
         
     }
 }
@@ -46,6 +57,7 @@ let  mapStateToProps= (state) =>{
         pageSize: state.usersPage.pageSize,
         totalUsersCount: state.usersPage.totalUsersCount,
         currentPage: state.usersPage.currentPage,
+        isFetching: state.usersPage.isFetching,
     }
     
 }
@@ -64,7 +76,12 @@ let  dispatchToProps = (dispatch) =>{
         },
         setCurrentPage : (pageNumber) =>{
             dispatch(setCurrentPageActionCreator(pageNumber));
+        },
+        toggleFetching: (isFetching)=>{
+            dispatch(isFetchingActionCreator(isFetching))
         }
+
+
     }
 }
 

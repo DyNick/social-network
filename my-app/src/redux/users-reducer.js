@@ -81,21 +81,21 @@ const userReducer = (state = initialState, action) => {
 
   
 }
-export const followActionCreator = (userId) => {
+export const following = (userId) => {
     return { type: FOLLOW ,userId}
 }
 
-export const unFollowActionCreator = (userId) => {
+export const unFollowing = (userId) => {
     return { type: UN_FOLLOW, userId }
 }
-export const setUsersActionCreator = (users) => {
+export const  setUsers = (users) => {
     return { type: SET_USERS, users }
 }
-export const setCurrentPageActionCreator = ( currentPage) => {
+export const setCurrentPage = ( currentPage) => {
     return { type: SET_CURRENT_PAGE,  currentPage: currentPage}
 }
 
-export const isFetchingActionCreator = ( isFetching) => {
+export const toggleFetching = ( isFetching) => {
     return { type: TOGGLE_IS_FETCHING,  isFetching}
 }
 export default userReducer

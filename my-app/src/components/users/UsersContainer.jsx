@@ -1,10 +1,16 @@
 import React from 'react';
 import Users from './Users'
-import {followActionCreator,unFollowActionCreator,setUsersActionCreator,setCurrentPageActionCreator,isFetchingActionCreator} from '../../redux/users-reducer';
 import * as axios from 'axios'
 import { connect } from 'react-redux';
 import PreloaderImg from '../../assets/image/preloader.gif';
-import Preloader from '../preloader/Preloader'
+import Preloader from '../preloader/Preloader';
+import {
+    following,
+    unFollowing,
+    setUsers,
+    setCurrentPage,
+    toggleFetching
+} from '../../redux/users-reducer';
 
 
 class UsersContent extends React.Component {
@@ -62,30 +68,17 @@ let  mapStateToProps= (state) =>{
     
 }
 
-let  dispatchToProps = (dispatch) =>{
-    return {
-        following: (userId)=>{
-            dispatch(followActionCreator(userId));
-        },
-        unFollowing: (userId)=>{
-            console.log(userId);
-            dispatch(unFollowActionCreator(userId));
-        },
-        setUsers : (users) =>{
-            dispatch(setUsersActionCreator(users))
-        },
-        setCurrentPage : (pageNumber) =>{
-            dispatch(setCurrentPageActionCreator(pageNumber));
-        },
-        toggleFetching: (isFetching)=>{
-            dispatch(isFetchingActionCreator(isFetching))
-        }
 
 
-    }
-}
 
-const UsersContainer = connect(mapStateToProps,dispatchToProps)(UsersContent)
+const UsersContainer = connect(mapStateToProps,{
+                                following,
+                                unFollowing,
+                                setUsers,
+                                setCurrentPage,
+                                toggleFetching
+                            } )(UsersContent)
+                           
 
 
 export default UsersContainer

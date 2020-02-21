@@ -2,7 +2,7 @@ import React from 'react';
 import UsersClasses from './Users.module.css';
 //import userPhoto from '../../assets/image/avatar.png';
 //import * as axios from 'axios'
-
+import { NavLink } from 'react-router-dom';
 
 
 const Users = (props) => {
@@ -25,7 +25,9 @@ const Users = (props) => {
             {props.users.map((item, index) => {
                 return (
                     <div key={index}>
+                        <NavLink  to={`/profile/${item.id}`} >
                         <img src={item.avatar_url} alt="" className= {UsersClasses.avatar}/>
+                        </NavLink>
                         <p>{item.login}</p>
                         <div>
                             {

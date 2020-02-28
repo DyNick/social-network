@@ -3,7 +3,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Header from './components/header/Header';
+import HeaderContainer from './components/header/HeaderContainer';
 import Footer from './components/footer/Footer';
 import Nav from './components/navigation/Nav';
 import Content from './components/content/Content';
@@ -21,7 +21,7 @@ function App(props) {
    
     <div className="App">
         <div className='container grid'>
-          <Header/>
+          <HeaderContainer/>
           <Nav/>
           <div className='App-wrapper-content'>
 

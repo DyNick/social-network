@@ -1,6 +1,7 @@
 import React from 'react';
 import profileClasses from '../profile/Profile.module.css';
 import Preloader from '../../preloader/Preloader';
+import userPhoto from '../../../assets/image/avatar.png';
 
 
 const Profile = (props)=>{
@@ -14,11 +15,11 @@ if(!props.userProfile){
 
                 <div className='user-profile-box'>
                     
-                <img src={props.userProfile.avatar_url} className={profileClasses.userProfileBox__image}/>
+                <img src={   props.userProfile.photos.small != null?props.userProfile.photos.small:userPhoto} className={profileClasses.userProfileBox__image}/>
                     <div className='user-profile-box__description'>
-                        <p className ='name'> {props.userProfile.name}</p>
-                        <p className ='birthday'>{props.userProfile.repos_url}</p>
-                        <p className ='education'>{props.userProfile.organizations_url}</p>
+                        <p className ='name'> {props.userProfile.fullName}</p>
+                        {/* <p className ='birthday'>{props.userProfile.repos_url}</p>
+                        <p className ='education'>{props.userProfile.organizations_url}</p> */}
                     </div>
                 </div>
         </div>
